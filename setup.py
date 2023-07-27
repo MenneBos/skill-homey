@@ -5,7 +5,7 @@ from os import walk, path
 
 
 URL = "https://github.com/MenneBos/skill-homey"
-SKILL_CLAZZ = "NewsSkill"  # needs to match __init__.py class name
+SKILL_CLAZZ = "HomeySkill"  # needs to match __init__.py class name
 PYPI_NAME = "skill-homey"  # pip install PYPI_NAME
 
 
