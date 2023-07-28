@@ -1,3 +1,4 @@
+import os
 from .HomieMQTT import HomieMQTT
 from .homie_classes import HomieDevice
 #from mycroft.util.log import getLogger
@@ -29,6 +30,7 @@ class HomieAdapter:
 
     def getdevicesjson(self):
         message, parent, deviceid = self.homiemqtt.getmessages()
+        print(message, parent, deviceid)
         device = HomieDevice(deviceid, message, parent)
         result_devices = []
         i = 0
