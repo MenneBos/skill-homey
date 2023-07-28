@@ -76,7 +76,7 @@ class HomeySkill(MycroftSkill):
             'where': where
         }
         where = where.replace(" ","")
-        print(where)
+        print("Menne data", where, what, state, action)
         LOGGER.debug("message : " + str(message.data))
         response = self.homey.switch(state, what, where, action)
         edng = re.compile(str(state).title(), re.I)
