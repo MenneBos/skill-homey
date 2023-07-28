@@ -48,9 +48,9 @@ class HomieMQTT:
                 self.mqttc.connect(host=self.mq_host,port=int(self.mq_port))
                 threading.Thread(target=self.startloop).start()
                 self.mq_connected = True
-                print("Connected to MQ!")
+                print("Connected to MQTT!")
             except Exception as ex:
-                print("Could not connect to MQ: {0}".format(ex))
+                print("Could not connect to MQTT: {0}".format(ex))
                 print("Trying again in 5 seconds...")
                 time.sleep(5)
         self.notify()
