@@ -220,7 +220,8 @@ class Homey:
             offnoun = 'uit'
             thermostatnoun = 'thermostat'
             thermostatnoun2 = 'thermostaat'
-            lightnoun = 'licht'
+            lightnoun = 'light'  # keep this english as Homey is using english as class
+            socketnoun = 'socket'
         if what == temperaturenoun or what == temperaturenoun2: what = thermostatnoun2
         if where == allnoun:
             data = self.findall(what)
@@ -236,7 +237,7 @@ class Homey:
             nodetype = node[2]
             nodeproperties = node[3]
             print(" Menne switch node:", node_id, nodename, nodetype, nodeproperties, actionstate)
-            if nodetype == lightnoun:
+            if nodetype == lightnoun or nodetype == socketnoun:
                 targetstate_onoff = ""
                 if actionstate == onnoun: targetstate_onoff = "true"
                 elif actionstate == offnoun: targetstate_onoff = "false"
