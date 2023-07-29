@@ -236,7 +236,7 @@ class Homey:
             nodetype = node[2]
             nodeproperties = node[3]
             print(" Menne switch node:", node_id, nodename, nodetype, nodeproperties, actionstate)
-            if nodetype == re.compile(lightnoun, re.IGNORECASE):
+            if nodetype == lightnoun:
                 targetstate_onoff = ""
                 if actionstate == onnoun: targetstate_onoff = "true"
                 elif actionstate == offnoun: targetstate_onoff = "false"
