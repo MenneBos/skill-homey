@@ -32,7 +32,7 @@ class Homey:
                 sname = devices['Devices'][0]['Nodes'][i]['Name']
 		#print('Menne sname:', sname)
                 stype = devices['Devices'][0]['Nodes'][i]['Type']
-		print('Menne sname:' + stype)
+		#print('Menne sname:' + stype)
                 typ = re.compile(stype, re.I)
                 snode_id = devices['Devices'][0]['Nodes'][i]['Node_id']
                 sproperties ={}
