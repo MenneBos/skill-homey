@@ -61,7 +61,7 @@ class HomieAdapter:
         root = self.homieroot
         topic = root+"/"+action
         self.homiemqtt.mqttc.publish(topic,str(payload),1,True)
-        #print("topic: "+topic+"=>"+payload)
+        print("topic: "+topic+"=>"+payload)
         #LOGGER.info("topic: "+topic+"=>"+payload)
 
     def check_mqttconnection(self):
