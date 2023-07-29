@@ -54,6 +54,7 @@ class HomieAdapter:
             i = i + 1
         result_devices.append({"Nodes": result_nodes})
         result = {'Devices': result_devices}
+        print("Menne Homey nodes:",result)
         return result
 
     def take_action(self,cmd):
