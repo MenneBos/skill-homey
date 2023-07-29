@@ -1,5 +1,6 @@
 """For controlling Homey."""
 import re
+import numpy as np
 from .HomieAdapter import HomieAdapter
 #from mycroft.util.log import getLogger
 
@@ -218,13 +219,13 @@ class Homey:
             offnoun = 'uit'
             thermostatnoun = 'thermostat'
             thermostatnoun2 = 'thermostaat'
-            lightnoun = 'light'
+            lightnoun = 'licht'
         if what == temperaturenoun or what == temperaturenoun2: what = thermostatnoun2
         if where == allnoun:
             data = self.findall(what)
         else:
-            data = self.findnode(what, where)
-	    #print('Menne data:', data)
+            data = self.findnode(what, where)   # recieves data = [[snode_id,sname,typ,sproperties]]
+	    print(np.matrix(A))
         if len(data) == 0: return None #node not found
         for node in data:
             result = None
