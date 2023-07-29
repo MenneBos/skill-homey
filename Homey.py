@@ -30,7 +30,7 @@ class Homey:
         while i < len(devices['Devices'][0]['Nodes']):
             if whr.search(devices['Devices'][0]['Nodes'][i]['Name']) and wht.search(devices['Devices'][0]['Nodes'][i]['Name']):
                 sname = devices['Devices'][0]['Nodes'][i]['Name']
-		print('Menne sname:', sname)
+		#print('Menne sname:', sname)
                 stype = devices['Devices'][0]['Nodes'][i]['Type']
 		print('Menne sname:' + stype)
                 typ = re.compile(stype, re.I)
