@@ -26,14 +26,12 @@ class Homey:
         whr = re.compile(where, re.I)
         result = []
         devices = self.ha.getdevicesjson()
-	#print(devices)
         i=0
         while i < len(devices['Devices'][0]['Nodes']):
             if whr.search(devices['Devices'][0]['Nodes'][i]['Name']) or wht.search(devices['Devices'][0]['Nodes'][i]['Name']):
                 sname = devices['Devices'][0]['Nodes'][i]['Name']
-		#print('Menne sname:', sname)
+		print(sname)
                 stype = devices['Devices'][0]['Nodes'][i]['Type']
-		#print('Menne sname:' + stype)
                 typ = re.compile(stype, re.I)
                 snode_id = devices['Devices'][0]['Nodes'][i]['Node_id']
                 sproperties ={}
