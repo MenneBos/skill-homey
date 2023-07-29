@@ -79,6 +79,7 @@ class HomeySkill(MycroftSkill):
         print("Menne --init-- intent", where, what, state, action)
         LOGGER.debug("message : " + str(message.data))
         response = self.homey.switch(state, what, where, action)
+        print("Menne --init--", response)
         edng = re.compile(str(state).title(), re.I)
         ending = "ed"
         if edng.search('aan') or edng.search('uit'):
