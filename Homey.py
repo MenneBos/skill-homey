@@ -200,7 +200,7 @@ class Homey:
 
     def switch(self, actionstate, what, where, action):
         """Switch the device in Homey."""
-        print("Menne enter sitch fundtion")
+        print("Menne switch :", self.lang)
         if not self.ha.check_mqttconnection(): return False
         result = None
         temperaturenoun = 'temperature'
@@ -235,10 +235,12 @@ class Homey:
             nodename = node[1]
             nodetype = node[2]
             nodeproperties = node[3]
+            print(" Menne switch node:", node_id, nodename, nodetype, nodeproperties, actionstate)
             if nodetype == re.compile(lightnoun, re.IGNORECASE):
                 targetstate_onoff = ""
                 if actionstate == onnoun: targetstate_onoff = "true"
                 elif actionstate == offnoun: targetstate_onoff = "false"
+                print("Menne switch action:", actionstate, nodeproperties['onoff'])
                 if nodeproperties['onoff'] == targetstate_onoff: 
                     result = 2 #targetstate is currentstate
                 if result == None:
@@ -265,7 +267,7 @@ class Homey:
 
 
 
-        if where == allnoun and result != None : result =3
+        if where == allnoun and result != None : result =3 
         return result
 
     def get(self, what, where):
