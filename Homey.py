@@ -46,7 +46,7 @@ class Homey:
         #input => what = what
         #output => [nodename, stype, properties] or None if nothing found
         #===START===>
-	print(self.lang)
+        print(self.lang)
         if self.lang == 'nl-nl':
             if what[-2:] == "en" : what = what[:len(what)-2]
             if what[-1:] == "s": what = what[:len(what) - 1]
