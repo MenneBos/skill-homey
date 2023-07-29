@@ -30,7 +30,7 @@ class Homey:
         while i < len(devices['Devices'][0]['Nodes']):
             if whr.search(devices['Devices'][0]['Nodes'][i]['Name']) or wht.search(devices['Devices'][0]['Nodes'][i]['Name']):
                 sname = devices['Devices'][0]['Nodes'][i]['Name']
-		print(sname)
+		#print(sname)
                 stype = devices['Devices'][0]['Nodes'][i]['Type']
                 typ = re.compile(stype, re.I)
                 snode_id = devices['Devices'][0]['Nodes'][i]['Node_id']
