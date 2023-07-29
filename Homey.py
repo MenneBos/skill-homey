@@ -200,7 +200,8 @@ class Homey:
 
     def switch(self, actionstate, what, where, action):
         """Switch the device in Homey."""
-        if not self.ha.check_mqttconnection(): return False
+        print("Menne enter sitch fundtion")
+	if not self.ha.check_mqttconnection(): return False
         result = None
         temperaturenoun = 'temperature'
         temperaturenoun2 = 'heating'
@@ -223,8 +224,10 @@ class Homey:
         if what == temperaturenoun or what == temperaturenoun2: what = thermostatnoun2
         if where == allnoun:
             data = self.findall(what)
+            print("Menne switch all:", data)
         else:
             data = self.findnode(what, where)   # recieves data = [[snode_id,sname,typ,sproperties]]
+            print("Menne switch node:", data)
         if len(data) == 0: return None #node not found
         for node in data:
             result = None
