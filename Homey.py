@@ -201,7 +201,7 @@ class Homey:
     def switch(self, actionstate, what, where, action):
         """Switch the device in Homey."""
         print("Menne enter sitch fundtion")
-	if not self.ha.check_mqttconnection(): return False
+        if not self.ha.check_mqttconnection(): return False
         result = None
         temperaturenoun = 'temperature'
         temperaturenoun2 = 'heating'
