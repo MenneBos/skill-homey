@@ -38,7 +38,7 @@ class Homey:
                 sproperties ={}
                 for property in devices['Devices'][0]['Nodes'][i]['Properties']:
                     sproperties[property['Name']]=property['Value']
-                result = [[snode_id,sname,styp,sproperties]]
+                result = [[snode_id,sname,stype,sproperties]]
                 break
             i += 1
         return result
