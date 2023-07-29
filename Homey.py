@@ -214,7 +214,7 @@ class Homey:
         if self.lang == 'nl-nl':
             temperaturenoun = 'temperatuur'
             temperaturenoun2 = 'verwarming'
-            allnoun = 'alle'
+            allnoun = 'all'		#all was gegenereerd wanneer geenlocatie was gegeven
             onnoun = 'aan'
             offnoun = 'uit'
             thermostatnoun = 'thermostat'
