@@ -76,7 +76,6 @@ class HomieMQTT:
         threading.Thread(target=self.reconnect,args=(False,)).start()
 
     def getmessages(self):
-        print("Menne getMessage root:", self.mq_root)
         temp = self.mq_root.split("/")
         self.homie_parent = temp[0]
         self.homie_device = temp[1]
