@@ -53,7 +53,7 @@ class Homey:
             if what[-1:] == "s": what = what[:len(what) - 1]
         else :what = what[:len(what)-1]
         wht = re.compile(what, re.I)
-        print("Menne findall:". what)
+        print("Menne findall:", what)
         result = []
         devices = self.ha.getdevicesjson()
         i=0
