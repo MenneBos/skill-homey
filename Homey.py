@@ -87,6 +87,7 @@ class Homey:
         offnoun = 'off'
         thermostatnoun = 'thermostat'
         lightnoun = 'light'
+        socketnoun = 'socket'
 
         if self.lang == 'nl-nl':
             degreesnoun = 'Graden'
@@ -106,6 +107,7 @@ class Homey:
             offnoun = 'uit'
             thermostatnoun = 'thermostat'
             lightnoun ='light'
+            socketnoun = 'socket'
         if type == re.compile(thermostatnoun, re.IGNORECASE):
             dsrdst = str(actionamount).title()
             act = str(action).title()
@@ -150,7 +152,7 @@ class Homey:
                 cmd = ["target-temperature/set" , str(stlvl)]
             return cmd   
 
-        if type == re.compile(lightnoun, re.IGNORECASE):
+        if type == re.compile(lightnoun, re.IGNORECASE) or type == re.compile(socketnoun, re.IGNORECASE):
             dsrdst = str(actionamount).title()
             act = str(action).title()
             if dsrdst == "None":
