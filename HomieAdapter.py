@@ -31,6 +31,7 @@ class HomieAdapter:
     def getdevicesjson(self):
         message, parent, deviceid = self.homiemqtt.getmessages()
         device = HomieDevice(deviceid, message, parent)
+        print(devices)
         result_devices = []
         i = 0
         result_nodes = []
