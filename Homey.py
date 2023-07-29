@@ -38,7 +38,7 @@ class Homey:
                 sproperties ={}
                 for property in devices['Devices'][0]['Nodes'][i]['Properties']:
                     sproperties[property['Name']]=property['Value']
-                result = [[snode_id,sname,stype,sproperties]]
+                result = [[snode_id,sname,typ,sproperties]]
                 break
             i += 1
         return result
@@ -65,7 +65,7 @@ class Homey:
                 sproperties ={}
                 for property in devices['Devices'][0]['Nodes'][i]['Properties']:
                     sproperties[property['Name']]=property['Value']
-                result.append([snode_id,sname,stype,sproperties])
+                result.append([snode_id,sname,typ,sproperties])
             i += 1
         return result
 
@@ -237,7 +237,7 @@ class Homey:
             nodetype = node[2]
             nodeproperties = node[3]
             print(" Menne switch node:", node_id, nodename, nodetype, nodeproperties, actionstate)
-            if nodetype == lightnoun or nodetype == socketnoun:
+            if nodetype == re.compile(lightnoun, re.IGNORECASE) or re.compile(socketnoun, re.IGNORECASE):
                 targetstate_onoff = ""
                 if actionstate == onnoun: targetstate_onoff = "true"
                 elif actionstate == offnoun: targetstate_onoff = "false"
