@@ -81,7 +81,7 @@ class HomeySkill(MycroftSkill):
         response = self.homey.switch(state, what, where, action)
         edng = re.compile(str(state).title(), re.I)
         ending = "ed"
-        if edng.search('on') or edng.search('off'):
+        if edng.search('aan') or edng.search('uit'):
             ending = ""
         data['stateverb'] = str(state).title()+ending
         data['state'] = str(state).title()
