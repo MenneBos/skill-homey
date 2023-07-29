@@ -25,6 +25,7 @@ class Homey:
         wht = re.compile(what, re.I)
         whr = re.compile(where, re.I)
         result = []
+        print("Menne findnode:", what)
         devices = self.ha.getdevicesjson()
         i=0
         while i < len(devices['Devices'][0]['Nodes']):
@@ -52,6 +53,7 @@ class Homey:
             if what[-1:] == "s": what = what[:len(what) - 1]
         else :what = what[:len(what)-1]
         wht = re.compile(what, re.I)
+        print("Menne findall:". what)
         result = []
         devices = self.ha.getdevicesjson()
         i=0
