@@ -25,6 +25,7 @@ class Homey:
         whr = re.compile(where, re.I)
         result = []
         devices = self.ha.getdevicesjson()
+	print("Menne data:", devices)
         i=0
         while i < len(devices['Devices'][0]['Nodes']):
             if whr.search(devices['Devices'][0]['Nodes'][i]['Name']) and wht.search(devices['Devices'][0]['Nodes'][i]['Name']):
