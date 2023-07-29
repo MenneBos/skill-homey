@@ -22,7 +22,6 @@ class Homey:
         #input => what = what, where = where
         #output => [nodename, stype, properties] or None if nothing found
         #===START===>
-	print(what)
         wht = re.compile(what, re.I)
         whr = re.compile(where, re.I)
         result = []
