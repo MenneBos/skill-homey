@@ -3,7 +3,7 @@ import sys
 import re
 import time
 
-do = Homey("192.168.178.100","1883","homie/homey-5d667df592e8eb0c7d3f1022",False,"rstdelange","pasw0rd")
+do = Homey("192.168.1.192","1883","homie/homey",False,"","")
 
 print("sleeping")
 i=0
