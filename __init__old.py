@@ -26,7 +26,7 @@
 from ovos_workshop.skills import OVOSSkill
 from ovos_utils.intents import IntentBuilder
 from ovos_workshop.decorators import intent_handler
-from ovos_utils.log import getLogger
+#from ovos_utils.log import getLogger
 from os.path import dirname, abspath
 from .Homey import Homey
 import sys
