@@ -40,7 +40,7 @@ sys.path.append(abspath(dirname(__file__)))
 LOGGER = LOG(__name__)
 
 
-class HomeySkill(MycroftSkill):
+class HomeySkill(OVOSSkill):
 
     def __init__(self):
         super(HomeySkill, self).__init__(name="HomeySkill")
