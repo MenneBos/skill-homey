@@ -14,7 +14,7 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with Mycroft Core.  If not, see <http://www.gnu.org/licenses/>.
-​
+
 from ovos_workshop.skills import OVOSSkill
 from ovos_utils.intents import IntentBuilder
 from ovos_workshop.decorators import intent_handler
