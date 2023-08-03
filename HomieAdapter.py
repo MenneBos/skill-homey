@@ -30,9 +30,9 @@ class HomieAdapter:
 
     def getdevicesjson(self):
         message, parent, deviceid = self.homiemqtt.getmessages()
-        print("Menne MQTT devices :", message)
+        print("Menne getdevicesjson :", message, parent, deviceid)
         device = HomieDevice(deviceid, message, parent)
-        print("Menne data:", device)
+        print("Menne getdevicesjson2 :", device)
         result_devices = []
         i = 0
         result_nodes = []
