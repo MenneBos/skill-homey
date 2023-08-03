@@ -37,7 +37,7 @@ __author__ = 'R. de Lange'
 	Please find on https://github.com/treussart/domoticz_skill """
 
 sys.path.append(abspath(dirname(__file__)))
-LOGGER = getLogger(__name__)
+LOGGER = LOG(__name__)
 
 
 class HomeySkill(MycroftSkill):
@@ -85,7 +85,7 @@ class HomeySkill(MycroftSkill):
         }
         where = where.replace(" ","")
         print("Menne --init-- intent", where, what, state, action)
-        LOG.debug("message : " + str(message.data))
+        LOGGER.debug("message : " + str(message.data))
         response = self.homey.switch(state, what, where, action)
         print("Menne --init--", response)
         edng = re.compile(str(state).title(), re.I)
