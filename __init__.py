@@ -57,183 +57,92 @@ class HomeySkill(OVOSSkill):
                              self.handle_homey_infos_intent)
 
         self.homey = Homey(
-
             self.settings.get("hostname"),
-
             self.settings.get("port"),
-
             self.settings.get("device"),
-
             self.settings.get("authentication"),
-
             self.settings.get("username"),
-
             self.settings.get("password"),
-
             self.lang1)
 
-​
-
     def handle_homey_switch_intent(self, message):
-
         state = message.data.get("StateKeyword")
-
         what = message.data.get("WhatKeyword")
-
         where = message.data.get("WhereKeyword")
-
         action = message.data.get("TurnKeyword")
-
         if where ==None: where = "all"
-
         data = {
-
             'what': what,
-
             'where': where
-
         }
-
         where = where.replace(" ","")
-
         print(where)
-
         LOG.debug("message : " + str(message.data))
-
         response = self.homey.switch(state, what, where, action)
-
         edng = re.compile(str(state).title(), re.I)
-
         ending = "ed"
-
         if edng.search('on') or edng.search('off'):
-
             ending = ""
-
         data['stateverb'] = str(state).title()+ending
-
         data['state'] = str(state).title()
-
         if response == False: self.speak_dialog("NoConnection",data)
-
         elif response is None:
-
             self.speak_dialog("NotFound", data)
-
         elif response is 2:
-
             self.speak_dialog("AlreadyTarget", data)
-
         elif response is 1:
-
             self.speak_dialog("OpsError", data)
-
         else:
-
             self.speak_dialog("OpsSuccess", data)
-
 ​
-
     def handle_homey_infos_intent(self, message):
-
         what = message.data.get("WhatKeyword")
-
         where = message.data.get("WhereKeyword")
-
         data = {
-
             'what': what,
-
             'where': where
-
         }
-
         where = where.replace(" ","")
-
         response = self.homey.get(what, where)
-
         sentence = ""
-
         if response == False: self.speak_dialog("NoConnection",data)
-
         elif len(response) == 0:
-
             self.speak_dialog("NotFound", data)
-
         elif len(response) > 0:
-
             dd = []
-
             keywords = ""
-
             for item in response:
-
                 if not re.search(item[0].replace(" ",""),keywords):
-
                     d = []
-
                     d.append(data['where'])
-
                     d.append(data['what'])
-
                     d.append(item[0])
-
                     d.append(item[1])
-
                     d.append(item[2])
-
                     dd.append(d)
-
                     keywords = keywords+item[0].replace(" ","")+" "
-
             count = 1
-
             for item_d in dd:
-
                 sentencedata = {}
-
                 sentencedata.clear()
-
                 sentencedata['where'] = item_d[0]
-
                 sentencedata['what'] = item_d[1]
-
                 sentencedata['measurement'] = item_d[2]
-
                 sentencedata['value'] = item_d[3]
-
                 sentencedata['unit'] = item_d[4]
-
                 if self.homey.lang == "nl-nl":
-
                     if sentencedata['measurement'] == "current temperature" : sentencedata['measurement'] = "huidige temperatuur"
-
                     if sentencedata['measurement'] == "target temperature": sentencedata['measurement'] = "ingestelde temperatuur"
-
                     if sentencedata['measurement'] == "current humidity": sentencedata['measurement'] = "huidige luchtvochtigheid"
-
 ​
-
                 if count ==1: self.speak_dialog("SensorRead1",sentencedata)
-
                 elif count == len(dd) and len(dd) > 1:
-
                     self.speak_dialog("SensorRead2",sentencedata)
-
                 elif count != len(dd) and len(dd) > 1:
-
                     self.speak_dialog("SensorRead3",sentencedata)
-
-​
-
                 count =count+1
-
         #LOGGER.debug("result : " + str(sentence))
-
         #self.speak(str(sentence))
-
 ​
-
     def stop(self):
-
         pass
