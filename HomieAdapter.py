@@ -1,4 +1,4 @@
-ceimport os
+import os
 from .HomieMQTT import HomieMQTT
 from .homie_classes import HomieDevice
 #from mycroft.util.log import getLogger
