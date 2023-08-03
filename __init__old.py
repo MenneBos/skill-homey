@@ -25,7 +25,7 @@
 from ovos_workshop.skills import OVOSSkill
 from ovos_utils.intents import IntentBuilder
 from ovos_workshop.decorators import intent_handler
-#from ovos_utils.log import getLogger
+from ovos_utils.log import LOG
 from os.path import dirname, abspath
 from .Homey import Homey
 import sys
@@ -85,7 +85,7 @@ class HomeySkill(MycroftSkill):
         }
         where = where.replace(" ","")
         print("Menne --init-- intent", where, what, state, action)
-        LOGGER.debug("message : " + str(message.data))
+        LOG.debug("message : " + str(message.data))
         response = self.homey.switch(state, what, where, action)
         print("Menne --init--", response)
         edng = re.compile(str(state).title(), re.I)
