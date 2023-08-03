@@ -15,9 +15,18 @@
 # You should have received a copy of the GNU General Public License
 # along with Mycroft Core.  If not, see <http://www.gnu.org/licenses/>.
 
-from adapt.intent import IntentBuilder
-from mycroft.skills.core import MycroftSkill
-from mycroft.util.log import getLogger
+#from adapt.intent import IntentBuilder
+#from mycroft.skills.core import MycroftSkill
+#from mycroft.util.log import getLogger
+#from os.path import dirname, abspath
+#from .Homey import Homey
+#import sys
+#import re
+
+from ovos_workshop.skills import OVOSSkill
+from ovos_utils.intents import IntentBuilder
+from ovos_workshop.decorators import intent_handler
+from ovos_utils.log import LOG
 from os.path import dirname, abspath
 from .Homey import Homey
 import sys
