@@ -50,7 +50,7 @@ class HomeySkill(OVOSSkill):
         self.lang1 = self.config_core.get('lang')
 
         homey_switch_intent = IntentBuilder("SwitchIntent")\
-            .optionally("TurnKeyword")\
+            .require("TurnKeyword")\
             .require("StateKeyword")\
             .require("WhatKeyword")\
             .optionally("WhereKeyword").build()
@@ -60,7 +60,7 @@ class HomeySkill(OVOSSkill):
         homey_infos_intent = IntentBuilder("InfosIntent")\
             .require("InfosKeyword")\
             .require("WhatKeyword")\
-            .require("WhereKeyword")\
+            .optionally("WhereKeyword")\
             .optionally("StateKeyword").build()
         self.register_intent(homey_infos_intent,
                              self.handle_homey_infos_intent)
