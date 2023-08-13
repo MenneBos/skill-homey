@@ -106,13 +106,13 @@ class HomeySkill(OVOSSkill):
 
     def handle_homey_infos_intent(self, message):
         what = message.data.get("WhatKeyword")
-        where = message.data.get("WhereKeyword")
-        if where ==None: where = "onoff"  # works only with onoff
+        info = message.data.get("InfosKeyword")
+        if info == None: info = "stand"  # works only with onoff
         data = {
           'what': what,
-          'where': where
+          'where': info
         }
-        where = where.replace(" ","")
+        where = info.replace(" ","")
         print("--init-- info intent", where, what)
         response = self.homey.get(what, where)
         sentence = ""
