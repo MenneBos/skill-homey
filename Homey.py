@@ -326,11 +326,11 @@ class Homey:
                 if wht.search(devices['Devices'][0]['Nodes'][i]['Name']):
                     for property in devices['Devices'][0]['Nodes'][i]['Properties']:
                         print("Homey.py_properties,", property)
-                        if property['Name'] == prop & where == 'stand':
+                        if property['Name'] == prop and where == 'stand':
                             result.append(["current stand", property['Value'], standnoun])
-                        if property['Name'] == "color" & where == 'kleur':
+                        if property['Name'] == "color" and where == 'kleur':
                             result.append(["current color",property['Value'], temperaturenoun])
-                        if property['Name'] == "dim" & where == 'sterkte':
+                        if property['Name'] == "dim" and where == 'sterkte':
                             result.append(["current dim",property['Value'], percentnoun])
                 i += 1        
         return result
