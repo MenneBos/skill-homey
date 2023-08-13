@@ -298,7 +298,6 @@ class Homey:
             degreesnoun = 'graden'
             percentnoun = 'procent'
             standnoun = 'stand'
-            if 
         #TEMPERATURE
         if wht.search(temperaturenoun) or wht.search(temperaturenoun2):
             i=0
@@ -325,15 +324,13 @@ class Homey:
             i, j =0
             while i < len(devices['Devices'][0]['Nodes']):
                 if wht.search(devices['Devices'][0]['Nodes'][i]['Name']):
-                while j < len(devices['Devices'][0]['Nodes'][i]['Name']['Properties']):
-                   print("Homey.py_#_of_properties,", j+1)
-                   if whr.search(devices['Devices'][0]['Nodes'][i]['Name'][j]['Properties']):
-                      if property['Name'] == "onoff":
-                        result.append(["current stand",property['Value'], standnoun])
-                      if property['Name'] == "color":
-                        result.append(["current color",property['Value'], temperaturenoun])
-                      if property['Name'] == "dim":
-                        result.append(["current dim",property['Value'], percentnoun])
-                   j += 1
+                    for property in devices['Devices'][0]['Nodes'][i]['Properties']:
+                        print("Homey.py_properties,", property)
+                        if property['Name'] == prop & where == 'stand':
+                            result.append(["current stand", property['Value'], standnoun])
+                        if property['Name'] == "color" & where == 'kleur':
+                            result.append(["current color",property['Value'], temperaturenoun])
+                        if property['Name'] == "dim" & where == 'sterkte':
+                            result.append(["current dim",property['Value'], percentnoun])
                 i += 1        
         return result
