@@ -327,7 +327,10 @@ class Homey:
                     for property in devices['Devices'][0]['Nodes'][i]['Properties']:
                         print("Homey.py_properties,", property)
                         if property['Name'] == prop and where == 'stand':
-                            result.append(["current state", property['Value'], " "])
+                            if property['Value'] == 'false':
+                                result.append(["current state", "uit" , " "])
+                            else: 
+                                result.append(["current state", "aan" , " "])
                         if property['Name'] == "color" and where == 'kleur':
                             result.append(["current color", property['Value'], temperaturenoun])
                         if property['Name'] == "dim" and where == 'sterkte':
