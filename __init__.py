@@ -108,9 +108,9 @@ class HomeySkill(OVOSSkill):
         what = message.data.get("WhatKeyword")
         where = message.data.get("WhereKeyword")
         if where ==None: where = "all"
-          data = {
-            'what': what,
-            'where': where
+        data = {
+          'what': what,
+          'where': where
         }
         where = where.replace(" ","")
         print("--init-- info intent", where, what)
