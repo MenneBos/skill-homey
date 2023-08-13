@@ -84,10 +84,10 @@ class HomeySkill(OVOSSkill):
             'where': where
         }
         where = where.replace(" ","")
-        print("Menne --init-- intent", where, what, state, action)
+        print("--init-- switch intent", where, what, state, action)
         LOGGER.debug("message : " + str(message.data))
         response = self.homey.switch(state, what, where, action)
-        print("Menne --init--", response)
+        print("--init--", response)
         edng = re.compile(str(state).title(), re.I)
         ending = "ed"
         if edng.search('aan') or edng.search('uit'):
@@ -107,11 +107,13 @@ class HomeySkill(OVOSSkill):
     def handle_homey_infos_intent(self, message):
         what = message.data.get("WhatKeyword")
         where = message.data.get("WhereKeyword")
-        data = {
+        if where ==None: where = "all"
+          data = {
             'what': what,
             'where': where
         }
         where = where.replace(" ","")
+        print("--init-- info intent", where, what)
         response = self.homey.get(what, where)
         sentence = ""
         if response == False: self.speak_dialog("NoConnection",data)
