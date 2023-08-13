@@ -107,7 +107,7 @@ class HomeySkill(OVOSSkill):
     def handle_homey_infos_intent(self, message):
         what = message.data.get("WhatKeyword")
         where = message.data.get("WhereKeyword")
-        if where ==None: where = "all"
+        if where ==None: where = "onoff"  # works only with onoff
         data = {
           'what': what,
           'where': where
