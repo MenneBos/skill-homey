@@ -25,13 +25,13 @@ class Homey:
         wht = re.compile(what, re.I)
         whr = re.compile(where, re.I)
         result = []
-        print("Menne findnode:", what, self.lang)
+        print("Homey.py_findnode:", what, self.lang)
         devices = self.ha.getdevicesjson()
         i=0
         while i < len(devices['Devices'][0]['Nodes']):
             if whr.search(devices['Devices'][0]['Nodes'][i]['Name']) or wht.search(devices['Devices'][0]['Nodes'][i]['Name']):
                 sname = devices['Devices'][0]['Nodes'][i]['Name']
-                print("Menne findnode:", sname)
+                print("Homey.py_findnode:", sname)
                 stype = devices['Devices'][0]['Nodes'][i]['Type']
                 typ = re.compile(stype, re.I)
                 snode_id = devices['Devices'][0]['Nodes'][i]['Node_id']
@@ -52,7 +52,7 @@ class Homey:
             if what[-1:] == "s": what = what[:len(what) - 1]
         else :what = what[:len(what)-1]
         wht = re.compile(what, re.I)
-        print("Menne findall:", what, self.lang)
+        print("Homey.py_findall:", what, self.lang)
         result = []
         devices = self.ha.getdevicesjson()
         i=0
@@ -277,7 +277,9 @@ class Homey:
         """Get the device's data in Homey."""
         if not self.ha.check_mqttconnection(): return False
         result = []
+        print("Homey.py_get what and lang,:", what, self.lang)
         devices = self.ha.getdevicesjson()
+        print("Homey.py_findnode devices:", devices)
         wht = re.compile(what, re.I)
         whr = re.compile(where, re.I)
         temperaturenoun = 'temperature'
