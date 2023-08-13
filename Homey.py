@@ -328,11 +328,11 @@ class Homey:
                         print("Homey.py_properties,", property)
                         if property['Name'] == prop and where == 'stand':
                             if property['Value'] == 'false':
-                                result.append(["huidige stand", lightnoun, "is uit"])
-                            else: result.append(["huidige stand", lightnoun, "is aan"])
+                                result.append(["is uit"])
+                            else: result.append(["is aan"])
                         if property['Name'] == "color" and where == 'kleur':
-                            result.append(["huidige kleur is",property['Value'], temperaturenoun])
+                            result.append([property['Value'], temperaturenoun])
                         if property['Name'] == "dim" and where == 'sterkte':
-                            result.append(["huidige sterkte is",property['Value'], percentnoun])
+                            result.append([property['Value'], percentnoun])
                 i += 1        
         return result
