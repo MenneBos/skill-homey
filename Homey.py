@@ -327,7 +327,7 @@ class Homey:
                     for property in devices['Devices'][0]['Nodes'][i]['Properties']:
                         print("Homey.py_properties,", property)
                         if property['Name'] == prop and where == 'stand':
-                            if property['value'] == False:
+                            if property['Value'] == 'false':
                                 result.append(["huidige stand", lightnoun, "is uit"])
                             else: result.append(["huidige stand", lightnoun, "is aan"])
                         if property['Name'] == "color" and where == 'kleur':
