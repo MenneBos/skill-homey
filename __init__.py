@@ -148,8 +148,8 @@ class HomeySkill(OVOSSkill):
                     if sentencedata['measurement'] == "current state": sentencedata['measurement'] = "is"
                     if sentencedata['measurement'] == "current color": sentencedata['measurement'] = "is"
                     if sentencedata['measurement'] == "current dim": sentencedata['measurement'] = "is"
-
-                if count ==1: self.speak_dialog("SensorRead1",sentencedata)
+                print("opgebouwde zin", sentencedata)
+                if count == 1: self.speak_dialog("SensorRead1",sentencedata)
                 elif count == len(dd) and len(dd) > 1:
                     self.speak_dialog("SensorRead2",sentencedata)
                 elif count != len(dd) and len(dd) > 1:
