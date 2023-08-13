@@ -145,6 +145,9 @@ class HomeySkill(OVOSSkill):
                     if sentencedata['measurement'] == "current temperature" : sentencedata['measurement'] = "huidige temperatuur"
                     if sentencedata['measurement'] == "target temperature": sentencedata['measurement'] = "ingestelde temperatuur"
                     if sentencedata['measurement'] == "current humidity": sentencedata['measurement'] = "huidige luchtvochtigheid"
+                    if sentencedata['measurement'] == "current state": sentencedata['measurement'] = "is"
+                    if sentencedata['measurement'] == "current color": sentencedata['measurement'] = "is"
+                    if sentencedata['measurement'] == "current dim": sentencedata['measurement'] = "is"
 
                 if count ==1: self.speak_dialog("SensorRead1",sentencedata)
                 elif count == len(dd) and len(dd) > 1:
