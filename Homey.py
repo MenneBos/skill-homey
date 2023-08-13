@@ -321,7 +321,7 @@ class Homey:
                 i += 1
         #LIGHT
         if wht.search(lightnoun):
-            i, j =0
+            i =0
             while i < len(devices['Devices'][0]['Nodes']):
                 if wht.search(devices['Devices'][0]['Nodes'][i]['Name']):
                     for property in devices['Devices'][0]['Nodes'][i]['Properties']:
