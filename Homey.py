@@ -277,9 +277,12 @@ class Homey:
         """Get the device's data in Homey."""
         if not self.ha.check_mqttconnection(): return False
         result = []
-        print("Homey.py_get what and lang,:", what, self.lang)
+        print("Homey.py_get what and lang,:", what, where, self.lang)
         devices = self.ha.getdevicesjson()
         print("Homey.py_findnode devices:", devices)
+        if where == 'stand': prop = 'onoff'
+        if where == 'sterkte': prop = 'dim'
+        if where == 'kleur' : prop = 'color'
         wht = re.compile(what, re.I)
         whr = re.compile(where, re.I)
         temperaturenoun = 'temperature'
@@ -291,8 +294,11 @@ class Homey:
             temperaturenoun = 'temperatuur'
             temperaturenoun2 = 'verwarming'
             humiditynoun = 'luchtvochtigheid'
+            lightnoun = 'lamp'  # temporarly choice, prefer "stand" 
             degreesnoun = 'graden'
             percentnoun = 'procent'
+            standnoun = 'stand'
+            if 
         #TEMPERATURE
         if wht.search(temperaturenoun) or wht.search(temperaturenoun2):
             i=0
@@ -314,5 +320,20 @@ class Homey:
                         if property['Name'] == "measure-humidity":
                             result.append(["current humidity",property['Value'],percentnoun])
                 i += 1
-
+        #LIGHT
+        if wht.search(lightnoun):
+            i, j =0
+            while i < len(devices['Devices'][0]['Nodes']):
+                if wht.search(devices['Devices'][0]['Nodes'][i]['Name']):
+                while j < len(devices['Devices'][0]['Nodes'][i]['Name']['Properties']):
+                   print("Homey.py_#_of_properties,", j+1)
+                   if whr.search(devices['Devices'][0]['Nodes'][i]['Name'][j]['Properties']):
+                      if property['Name'] == "onoff":
+                        result.append(["current stand",property['Value'], standnoun])
+                      if property['Name'] == "color":
+                        result.append(["current color",property['Value'], temperaturenoun])
+                      if property['Name'] == "dim":
+                        result.append(["current dim",property['Value'], percentnoun])
+                   j += 1
+                i += 1        
         return result
