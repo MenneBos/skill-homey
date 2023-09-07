@@ -12,11 +12,11 @@ CONFIGURATION HOMEY
 
 Apps
 The homey requires multiple apps each with their own configuration. 
-    - Install the right app for your devices. How to configure these apps is not part of the description here.
-    - Install the MQTT client app. Tested is the "Musqitto MQTT client" from Menno van Grinsven. Set the IP address equal to the homey address and use port 1884. If wanted you can secure the connection with the broker.
-    - Install the MQTT broker. Tested is the "MQTT broker" from Menno van Grinsven. Give the port 1884 and enable unsecure connections
-    - Install the "MQTT Hub". This is an app to discover all devices and it status and broadcast this information according the homie convention to the MQTT broker. Set Hub "on", publish state by broadcast, protocol "Homie convention v3.0.1". Topic "homie/homey" and Birth and lastwill "on" with standard parameters.
-    - Check if devices are found by the "MQTT hub" and broadcast them on the topic.
+    -Install the right app for your devices. How to configure these apps is not part of the description here.
+    -Install the MQTT client app. Tested is the "Musqitto MQTT client" from Menno van Grinsven. Set the IP address equal to the homey address and use port 1884. If wanted you can secure the connection with the broker.
+    -Install the MQTT broker. Tested is the "MQTT broker" from Menno van Grinsven. Give the port 1884 and enable unsecure connections
+    -Install the "MQTT Hub". This is an app to discover all devices and it status and broadcast this information according the homie convention to the MQTT broker. Set Hub "on", publish state by broadcast, protocol "Homie convention v3.0.1". Topic "homie/homey" and Birth and lastwill "on" with standard parameters.
+    -Check if devices are found by the "MQTT hub" and broadcast them on the topic.
 
 Devices
     -You can use the Hue app to discover on/off devices. You can also use on/off devices from klikaanklikuit. Others on/off devices should work but they are not tested.
@@ -49,10 +49,10 @@ USAGE
 There are only two options available tested on a on/off light. More options possible but the code needs adjustments.
 
 Switch Light named "kantoor lamp"
-    - Hey Mycroft zet lamp in kantoor aan    # this will switch the light on with name "kantoor lamp"
-    - Hey Mycroft zet lamp uit               # this will switch the light of which has the name "lamp"
+    -Hey Mycroft zet lamp in kantoor aan    # this will switch the light on with name "kantoor lamp"
+    -Hey Mycroft zet lamp uit               # this will switch the light of which has the name "lamp"
 Ask Status named "kantoor lamp"
-    - Hey Mycroft stand van kantoor lamp     # this will give you the status of the "kantoor lamp"
-    - Hey Mycroft stand van lamp             # this will give you the status of the light with "lamp" in tis name
+    -Hey Mycroft stand van kantoor lamp     # this will give you the status of the "kantoor lamp"
+    -Hey Mycroft stand van lamp             # this will give you the status of the light with "lamp" in tis name
 
 #NOTE on Status request: "Hey Mycroft stand ......", is the only option to request data in Dutch. Using all other options in the vocab file will raise conflicts in OVOS and will not be recognized by OVOS. Using another request words can also lead to errors. This need still to be fixed.
