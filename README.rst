@@ -1,57 +1,57 @@
 Homey_skill
 ==============
 
-This skill is for controlling Homey with the source voice assistant Mycroft.
+This skill is for controlling Homey with the source voice assistant OVOS.
+Keep in mind this is a very early prototype only suitable for switching on/off and request status on/off with limited amount of working sentences.
 
 
-Requirements
-------------
+CONFIGURATION HOMEY
+---------------------------------
+Apps
+The homey requires multiple apps each with their own configuration. 
+- Install the right app for your devices. How to configure these apps is not part of the description here.
+- Install the MQTT client app. Tested is the "Musqitto MQTT client" from Menno van Grinsven. Set the IP address equal to the homey address and use port 1884. If wanted you can secure the connection with the broker.
+- Install the MQTT broker. Tested is the "MQTT broker" from Menno van Grinsven. Give the port 1884 and enable unsecure connections
+- Install the "MQTT Hub". This is an app to discover all devices and it status and broadcast this information according the homie convention to the MQTT broker. Set Hub "on", publish state by broadcast, protocol "Homie convention v3.0.1". Topic "homie/homey" and Birth and lastwill "on" with standard parameters.
+- Check if devices are found by the "MQTT hub" and broadcast them on the topic.
 
--  `Python3`_.
--  `Homey`_.
--  `Mycroft`_.
+Devices
+-You can use the Hue app to discover and name Hue lights. You can also use devices from klikaanklikuit. Others devices should work but they are not tested.
+-Name your devices in Homey uniquely by using the location and description in the device name. : "Kantoor Lamp". OVOS can look in the Homey for the device named by a location and description, in the code called "where" and "what". Devices can also be referenced by "What" alone but Mycroft will only fall back to that if it can't find the device using "Where What" or "What Where".
 
 
-Configuration
--------------
-
-Name your devices in Homey like this: "Where What".  Mycroft will look for the device listed
-in Homey. However the skill will also look for "What Where" as well.  Devices can also be
-referenced by "What" alone but Mycroft will only fall back to that if it can't find the device
-using "Where What" or "What Where".
-
-Note:  Especially with weather sensors try to name your devices something that won't interfere
-with other skills.  For instance naming a device "weather" could cause Mycroft to give you the
-current stat for the device named "weather" if you ask "what's the weather" rather than telling
-you what the current weather is via the weather skill.
-
-Mycroft Setting for the Homey Skill
+CONFIGURATION OVOS
 -----------------------------------
 
-The default settings for the Homey connection and configuration is the local host without
-authentication.  Please make sure to provide your device Homie mqtt topic. You can find that under the mqtt hub app in the Homey application.
+The solution is tested on the OVOS docker version. Installing OVOS is not part of the description.
+After installing OVOS install the path to the github repository and set the configuration of the homey skill.
 
-Usage
------
+~/ovos/config/skills/skill-homey.mennebos/settings.json
+    "hostname": "192.168.1.192",
+    "device": "homie/homey",
+    "label1": "null",
+    "__mycroft_skill_firstrun": false,
+    "password": "",
+    "port": "1884",
+    "authorization": false,
+    "username": "",
+    "label2": "null"
 
-In English :
+~/ovos/config/skills.list
+git+https://github.com/MenneBos/skill-homey
 
-examples device names:
+USAGE
+---------------------------------------
 
--  Living room light
--  Outside temperature
--  Front door lock
+There are only two options available tested on a light. More options possible but the code needs adjustments.
 
-example phrases:
+Switch Light
+- Hey Mycroft zet lamp in kantoor aan    # this will switch the light on with name "kantoor lamp"
+- Hey Mycroft zet lamp uit               # this will switch the light of which has the name "lamp"
+Ask Status
+- Hey Mycroft stand van kantoor lamp     # this will give you the status of the "kantoor lamp"
+- Hey Mycroft stand van lamp             # this will give you the status of the light with "lamp" in tis name
 
--  Hey Mycroft turn on the living room light
--  Hey Mycroft what is the outside temperature?
--  Hey Mycroft lock the front door
--  Hey Mycroft dim the dining room dimmer 50%
-
-
-.. _Python3: https://www.python.org/downloads/
-.. _Mycroft: https://www.mycroft.ai/
-.. _Homey: https://homey.app/nl-nl/
+#NOTE on Status request: "Hey Mycroft stand ......", is the only option to request data in Dutch. Using all other options in the vocab file will raise conflicts in OVOS and will not be recognized by OVOS. Using another request words can also lead to errors. This need still to be fixed.
 
 
